@@ -21,3 +21,13 @@ The initial site was verified live at c5443b8. Updated experience deployment pen
 A separate matrix covered 24 combinations across Edge, Chrome and WebKit at 320, 375, 390 (DPR 3), 430, 768, 1024, 1440 and landscape 812x375. Initial tablet targets were 43.03px; the 1100px responsive breakpoint now keeps them at least 44px. Text-only 200% enlargement initially widened 375px to 508px; min-width and headline wrapping now retain 375px. The font download is now 24,744-byte WOFF2 instead of 70,348-byte TTF. Matched loading comparison is running.
 
 The music UI replay race was reproduced in a browser: a previous rejected request stopped a newer playing request. UI request ownership now ignores stale failures. A screen-reader status that still claimed music was playing after Stop now says Music stopped. The before/after reproduction confirms both.
+
+## Language and loading checks
+
+The page offers an optional Filipino translation, with English as the default. `?lang=fil` opens Filipino directly; sharing preserves that selection. The personal letter is excluded from translation and keeps its original text. No language preference is stored.
+
+Both languages passed at 320, 375, 768, 1024 and 1440px in Edge and WebKit, including state preservation across language switches. Axe returned zero violations in both languages in the sampled states. The Node suite now passes 24 tests, including matching translation keys and placeholders.
+
+Blocking copy.js in Edge and WebKit leaves the native letter and card available, shows a readable refresh message and stops effects; no JavaScript exceptions occur. Audio replay browser checks still pass after localization.
+
+Nine matched slow-network samples compared TTF, WOFF2, and WOFF2 preload, three per option at 100kbps download, 300ms latency and fourfold CPU throttling. Median first content/font-ready times were 5.212s/16.613s for TTF, 5.220s/9.170s for WOFF2, and 7.020s/7.143s with preload. Chose WOFF2 without preload to preserve first content timing. These samples preceded the language module and are a font comparison, not a final live load-time promise.

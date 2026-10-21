@@ -13,6 +13,7 @@
 - [x] Add a downloadable birthday card and social preview image.
 - [x] Add automated regression checks for effects and music.
 - [ ] Complete additional quality passes until the usage target.
+- [x] Add and verify optional Filipino interface without changing the personal letter.
 - [ ] Shut down Windows after final deployment checks.
 
 ## Notes
@@ -23,4 +24,4 @@ John requested overdrive until 10% usage remains. Start reading: 94% remaining i
 
 ## In Progress
 
-- Matched font loading comparison across nine slow-network samples.
+- Final publication and live browser checks.

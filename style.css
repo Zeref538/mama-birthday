@@ -31,8 +31,8 @@ button:disabled { cursor: default; }
 .icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 .icon-library { position: absolute; width: 0; height: 0; overflow: hidden; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.skip { position: fixed; top: -100px; left: 16px; background: var(--pink); color: var(--bg); padding: 12px; z-index: 10; }
-.skip:focus { top: 16px; }
+.skip { position: fixed; top: 16px; left: 16px; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); background: var(--pink); color: var(--bg); padding: 0; z-index: 10; }
+.skip:focus { width: auto; height: auto; overflow: visible; clip-path: none; padding: 12px; }
 
 header { max-width: 1440px; margin: auto; display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 30px 5%; color: var(--muted); font-size: 12px; }
 .wordmark { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--pink); font-family: Birthday, Georgia, serif; font-size: 24px; white-space: nowrap; }
@@ -49,7 +49,7 @@ main { max-width: 1440px; margin: auto; }
 h1, h2, h3 { font-family: Birthday, Georgia, serif; font-weight: 400; margin: 0; letter-spacing: -.03em; text-wrap: balance; }
 .intro { min-width: 0; }
 h1 { overflow-wrap: anywhere; font-size: clamp(72px, 7.2vw, 96px); line-height: 1.03; }
-h1 > span { color: var(--pink); }
+h1 > .ma { color: var(--pink); }
 .recipient { margin: 24px 0 0; color: var(--gold); display: flex; gap: 13px; align-items: center; font-size: 12px; letter-spacing: .07em; }
 .fine-rule { display: inline-block; height: 1px; width: 25px; background: #b59b78; }
 .opening { font-family: Birthday, Georgia, serif; color: var(--pink); font-size: 24px; margin: 30px 0 14px; max-width: 350px; line-height: 1.3; }
@@ -146,17 +146,17 @@ h1 > span { color: var(--pink); }
 .letter-body { padding: 28px 36px 35px; font-size: 15px; line-height: 1.9; overflow-wrap: anywhere; }
 .letter[open] .letter-body { animation: letter-unfold .65s var(--ease) both; transform-origin: top; }
 .letter-date { font-size: 11px; color: #75465f; display: flex; gap: 10px; align-items: center; margin: 0 0 25px; }
-.salutation, .signature span { font-family: Birthday, Georgia, serif; font-size: 28px; }
+.salutation, .signature .signature-name { font-family: Birthday, Georgia, serif; font-size: 28px; }
 .salutation { margin: 0 0 22px; }
 #personal-message { min-height: 100px; }
 .placeholder-label { font-weight: 600; }
 .signature { margin-top: 30px; }
-.signature span { font-size: 34px; }
+.signature .signature-name { font-size: 34px; }
 
 .closing { text-align: center; background: var(--deep); padding: 80px 25px 60px; position: relative; }
 .closing > .icon { color: var(--pink); width: 24px; height: 24px; margin-bottom: 24px; }
 .closing h2 { font-size: clamp(48px, 6vw, 80px); line-height: 1.06; }
-.closing h2 span { color: var(--pink); }
+.closing h2 .recipient-name { color: var(--pink); }
 .closing > p { font-size: 14px; line-height: 1.9; color: var(--muted); margin: 26px 0; }
 .share-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: transparent; border: 1px solid #8f627e; border-radius: 4px; font-size: 12px; min-height: 48px; padding: 12px 20px; color: var(--pink); transition: background .2s; }
 .share-button:hover { background: #382039; }
@@ -167,7 +167,7 @@ h1 > span { color: var(--pink); }
 .share-fallback input { width: 100%; background: var(--bg); border: 1px solid var(--line); color: var(--text); padding: 14px; border-radius: 3px; min-height: 48px; font-size: 12px; }
 footer { margin: 0 8%; border-top: 1px solid var(--line); padding: 32px 0 35px; display: flex; justify-content: space-between; gap: 24px; align-items: end; }
 footer p { font-size: 12px; line-height: 1.9; color: var(--muted); margin: 0; }
-footer p span { color: var(--pink); }
+footer p .footer-date { color: var(--pink); }
 footer a { font-size: 12px; color: var(--muted); padding: 12px 0; }
 #celebration-effects { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
@@ -192,8 +192,8 @@ body.motion-paused .letter-body, body.motion-paused .flower-wish, body.motion-pa
   .birthday { grid-template-columns: 1fr; padding: 20px 23px 100px; gap: 12px; min-height: 0; }
   .intro { text-align: center; }
   h1 { font-size: clamp(62px, 17vw, 90px); line-height: 1.04; }
-  h1 br:nth-child(2) { display: none; }
-  h1 > span { display: inline-block; margin-left: 10px; }
+  h1 br:nth-of-type(2) { display: none; }
+  h1 > .ma { display: inline-block; margin-left: 10px; }
   .recipient { justify-content: center; font-size: 10px; gap: 10px; margin-top: 20px; }
   .opening { font-size: 21px; margin: 24px auto 14px; max-width: 290px; }
   .description { font-size: 13px; line-height: 1.85; margin-bottom: 14px; }
@@ -277,4 +277,14 @@ body.motion-paused .letter-body, body.motion-paused .flower-wish, body.motion-pa
   .closing-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
   .keepsake { width: 230px; max-width: 85%; margin: auto; }
   .closing-copy > p { font-size: 13px; }
+}
+
+/* The language button names the language it switches to. */
+.language-button { min-width: 64px; color: var(--gold); }
+.experience-controls { flex-wrap: wrap; }
+html[lang="fil"] h1 { font-size: clamp(52px, 5.9vw, 82px); }
+.signature .signoff { font-family: inherit; font-size: inherit; }
+@media (max-width: 760px) {
+  .experience-controls { gap: 8px; }
+  html[lang="fil"] h1 { font-size: clamp(45px, 14vw, 65px); }
 }

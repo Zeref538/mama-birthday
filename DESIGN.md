@@ -15,3 +15,5 @@ Motion thesis: extinguishing the candles turns their light into a burst of gold 
 Performance budget: no runtime dependencies, one canvas with at most 70 particles, capped device-pixel ratio, no continuous full-page blur or shadows. Static artwork and text are always available.
 
 The display font is served as a 24.7KB local WOFF2, with TTF retained as a fallback and SVG card source. Headline wrapping and grid minimum widths support enlarged text. The cake touch target layout switches at 1100px. A matching PNG keepsake is available in the closing section; the social preview uses the same artwork.
+
+The optional Filipino greeting uses a smaller display scale so its longer words fit phone screens. Language changes keep control states and selected flowers. A clipped skip link becomes visible only on focus. Preload was rejected after three matched loading samples per font option showed it delaying first content on slow connections.

@@ -9,3 +9,5 @@ Motion pauses when the scene leaves view, the tab is hidden, the user presses Pa
 Native share falls back to clipboard and then a selectable URL. Audio failures show a message. Native details works without JavaScript. The PNG keepsake is directly downloadable. No data is stored or sent by the site.
 
 Run the dependency-free Node tests for replay, cancellation and cleanup. Browser QA covers phone and desktop widths, keyboard, long letters, reduced motion, native audio fallback and blocked sharing. Publication is a fast-forward merge to main followed by a live build and browser check. Roll back with git revert.
+
+copy.js contains plain-text English and Filipino dictionaries. data-copy marks static interface text; dynamic state is rendered through the same dictionary. The personal message has no translation markers. The only URL option is the whitelisted language value fil; other values use English. No data is saved.

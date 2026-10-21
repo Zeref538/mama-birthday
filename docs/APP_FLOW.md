@@ -11,3 +11,5 @@ Play music starts a short birthday melody. Stop music ends it. Hiding the page a
 The closing section offers a PNG card download. Share opens the device share sheet when available, otherwise copies the public link. Clipboard denial reveals a selectable link. Cancelling the share sheet leaves the page quiet.
 
 Without JavaScript, the greeting, card download and native letter remain available; a note explains the candles and lists the flower wishes. No login, permission prompt or remote data is required.
+
+The language button switches English and Filipino while keeping candles, flower selection and letter state. A Filipino share link includes ?lang=fil. If the translation file fails, the page keeps its native letter and card and explains that refreshing may restore the interactive surprises.

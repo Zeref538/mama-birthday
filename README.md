@@ -25,3 +25,7 @@ The page collects no data and uses no accounts or paid services. Facebook's supp
 ## Assets
 
 The display font is DM Serif Display, licensed under the included `assets/OFL.txt`. The SVG birthday card is the editable source for the PNG keepsake. To regenerate the fallback melody, run `python tools/render-melody.py` from this folder.
+
+## Language
+
+English is the default. Tap Filipino to switch the website, or use https://zeref538.github.io/mama-birthday/?lang=fil. Your personal message is never translated or overwritten. The downloadable card stays in English. The native letter and card remain available if scripts cannot load.

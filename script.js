@@ -1,11 +1,19 @@
 'use strict';
 
+const translations = window.BirthdayCopy;
+let language = new URLSearchParams(window.location.search).get('lang') === 'fil' ? 'fil' : 'en';
+function t(key, values = {}) {
+  const template = translations?.[language]?.[key] || translations?.en?.[key] || '';
+  return template.replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
+}
+
 const candles = [...document.querySelectorAll('.candle')];
 const wish = document.querySelector('#wish');
 const status = document.querySelector('.wish-status');
 const hint = document.querySelector('.hint');
 const scene = document.querySelector('.cake-scene');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let systemReducedMotion = reducedMotion.matches;
 const effects = window.BirthdayEffects
   ? new window.BirthdayEffects(document.querySelector('#celebration-effects'), scene, reducedMotion) : null;
 let celebrated = false;
@@ -14,21 +22,35 @@ let motionPaused = false;
 document.querySelector('.experience-controls').hidden = false;
 document.querySelector('#share').hidden = false;
 
-function setWishButton(text, icon) {
+function setWishButton(text) {
   wish.replaceChildren(document.createTextNode(text));
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.classList.add('icon'); svg.setAttribute('aria-hidden', 'true');
+  svg.classList.add('icon');
+  svg.setAttribute('aria-hidden', 'true');
   const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  use.setAttribute('href', `#i-${icon}`); svg.append(use); wish.append(svg);
+  use.setAttribute('href', '#i-spark');
+  svg.append(use);
+  wish.append(svg);
+}
+
+function renderCandles() {
+  const remaining = candles.filter(candle => !candle.classList.contains('out')).length;
+  if (celebrated) status.textContent = t('wish-complete');
+  else if (remaining === 5) status.textContent = t('wish-initial');
+  else status.textContent = t(remaining === 1 ? 'wish-remaining-one' : 'wish-remaining-many', { count: remaining });
+  setWishButton(t(celebrated ? 'wish-again' : 'wish-blow'));
+  hint.textContent = t(celebrated ? 'wish-complete-hint' : 'wish-hint');
+  candles.forEach((candle, index) => {
+    candle.setAttribute('aria-label', t(candle.classList.contains('out') ? 'candle-out' : 'candle-blow', { number: index + 1 }));
+  });
+  scene.setAttribute('aria-label', t('cake-label'));
 }
 
 function celebrate() {
   if (celebrated || !candles.every(candle => candle.classList.contains('out'))) return;
   celebrated = true;
-  status.textContent = 'May your wish come true, Ma.';
-  setWishButton('Make another wish', 'spark');
-  hint.textContent = 'Happy birthday, Alma. You are so loved.';
   scene.classList.add('is-celebrating');
+  renderCandles();
   const rect = scene.getBoundingClientRect();
   effects?.burst(rect.left + rect.width / 2, rect.top + rect.height * .45);
 }
@@ -38,27 +60,24 @@ function extinguish(candle) {
   candle.classList.add('out');
   candle.setAttribute('aria-pressed', 'true');
   candle.setAttribute('aria-disabled', 'true');
-  candle.setAttribute('aria-label', `Candle ${candles.indexOf(candle) + 1} is blown out`);
 }
 
 function resetCandles() {
   celebrated = false;
-  effects?.clearBurst(); scene.classList.remove('is-celebrating');
-  candles.forEach((candle, index) => {
-    candle.classList.remove('out'); candle.removeAttribute('aria-disabled');
+  effects?.clearBurst();
+  scene.classList.remove('is-celebrating');
+  candles.forEach(candle => {
+    candle.classList.remove('out');
+    candle.removeAttribute('aria-disabled');
     candle.setAttribute('aria-pressed', 'false');
-    candle.setAttribute('aria-label', `Blow out candle ${index + 1}`);
   });
-  status.textContent = 'Close your eyes. Make a wish.';
-  setWishButton('Blow out the candles', 'spark');
-  hint.textContent = 'or tap each little flame';
+  renderCandles();
 }
 
 candles.forEach(candle => candle.addEventListener('click', () => {
   if (candle.getAttribute('aria-disabled') === 'true') return;
   extinguish(candle);
-  const remaining = candles.filter(item => !item.classList.contains('out')).length;
-  if (remaining) status.textContent = `${remaining} ${remaining === 1 ? 'candle' : 'candles'} left. Keep wishing.`;
+  renderCandles();
   celebrate();
 }));
 wish.addEventListener('click', () => {
@@ -68,106 +87,171 @@ wish.addEventListener('click', () => {
 
 const motionButton = document.querySelector('#motion');
 function updateMotion() {
-  const stopped = motionPaused || reducedMotion.matches;
+  const stopped = motionPaused || systemReducedMotion;
   document.body.classList.toggle('motion-paused', stopped);
   motionButton.setAttribute('aria-pressed', String(stopped));
-  motionButton.querySelector('span').textContent = reducedMotion.matches ? 'Reduced motion' : stopped ? 'Play effects' : 'Pause effects';
+  motionButton.querySelector('span').textContent = t(systemReducedMotion ? 'effects-reduced' : stopped ? 'effects-play' : 'effects-pause');
   motionButton.querySelector('use').setAttribute('href', stopped ? '#i-play' : '#i-pause');
-  motionButton.disabled = reducedMotion.matches;
+  motionButton.disabled = systemReducedMotion;
   effects?.setPaused(stopped);
 }
 motionButton.addEventListener('click', () => { motionPaused = !motionPaused; updateMotion(); });
-reducedMotion.addEventListener('change', updateMotion);
-updateMotion();
+reducedMotion.addEventListener('change', event => {
+  systemReducedMotion = event.matches;
+  updateMotion();
+});
 
-const wishes = {
-  peace: ['A little more peace.', 'May this year bring gentle mornings, lighter worries, and room to simply be.'],
-  joy: ['Joy in the little things.', 'May the ordinary days surprise you with laughter and the kind of happiness that stays.'],
-  love: ['Love, all around you.', 'May you feel loved in the quiet moments as much as in the big celebrations.'],
-  rest: ['Time, just for you.', 'May there be slow afternoons, deep breaths, and lovely days with nothing to rush.'],
-  adventure: ['Beautiful things ahead.', 'May the year open new doors, bring sweet surprises, and give you something wonderful to look forward to.'],
-};
 const picked = new Set();
+let selectedWish = null;
 const wishDisplay = document.querySelector('#flower-wish');
 const bloomCount = document.querySelector('#bloom-count');
+function renderFlowers() {
+  wishDisplay.querySelector('h3').textContent = t(selectedWish ? `wish-${selectedWish}-title` : 'wish-default-title');
+  wishDisplay.querySelector('p').textContent = t(selectedWish ? `wish-${selectedWish}-text` : 'wish-default-text');
+  bloomCount.textContent = t(picked.size === 5 ? 'bloom-count-all' : picked.size ? 'bloom-count-some' : 'bloom-count-zero', { count: picked.size });
+  document.querySelector('.bouquet').setAttribute('aria-label', t('bouquet-label'));
+  document.querySelectorAll('.bloom').forEach(bloom => {
+    bloom.setAttribute('aria-label', t(`flower-${bloom.dataset.wish}-label`));
+  });
+}
 document.querySelectorAll('.bloom').forEach(bloom => bloom.addEventListener('click', () => {
-  const key = bloom.dataset.wish;
-  const [title, text] = wishes[key];
+  selectedWish = bloom.dataset.wish;
   document.querySelectorAll('.bloom').forEach(item => item.setAttribute('aria-pressed', String(item === bloom)));
-  picked.add(key);
-  wishDisplay.querySelector('h3').textContent = title;
-  wishDisplay.querySelector('p').textContent = text;
+  picked.add(selectedWish);
+  renderFlowers();
   wishDisplay.classList.remove('is-changing');
   void wishDisplay.offsetWidth;
   wishDisplay.classList.add('is-changing');
-  bloomCount.textContent = picked.size === 5 ? 'All five wishes, with love for you.' : `${picked.size} of 5 birthday wishes discovered`;
   const rect = bloom.getBoundingClientRect();
   effects?.burst(rect.left + rect.width / 2, rect.top + rect.height / 2, 16);
 }));
 
 const letter = document.querySelector('.letter');
-letter.addEventListener('toggle', () => {
-  letter.querySelector('.open-label').firstChild.textContent = letter.open ? 'Close your letter ' : 'Open your letter ';
-});
+function renderLetter() {
+  const label = translations ? t(letter.open ? 'letter-close' : 'letter-open') : letter.open ? 'Close your letter' : 'Open your letter';
+  letter.querySelector('.open-label').firstChild.textContent = label + ' ';
+}
+letter.addEventListener('toggle', renderLetter);
 
 const musicButton = document.querySelector('#music');
 const audioStatus = document.querySelector('#audio-status');
 let musicPending = false;
+let musicFailed = false;
 let musicAction = 0;
+let audioStatusKey = '';
+function renderMusic() {
+  const playing = Boolean(music?.playing);
+  musicButton.setAttribute('aria-pressed', String(playing));
+  musicButton.querySelector('span').textContent = t(playing ? 'music-stop' : musicPending ? 'music-cancel' : musicFailed ? 'music-unavailable' : 'music-play');
+  musicButton.querySelector('use').setAttribute('href', playing ? '#i-pause' : '#i-music');
+  if (musicPending) musicButton.setAttribute('aria-busy', 'true');
+  else musicButton.removeAttribute('aria-busy');
+  audioStatus.textContent = audioStatusKey ? t(audioStatusKey) : '';
+}
 const music = window.BirthdayMusic ? new window.BirthdayMusic(playing => {
   const wasActive = musicButton.getAttribute('aria-pressed') === 'true' || musicPending;
-  musicButton.setAttribute('aria-pressed', String(playing));
-  musicButton.querySelector('span').textContent = playing ? 'Stop music' : 'Play music';
-  musicButton.querySelector('use').setAttribute('href', playing ? '#i-pause' : '#i-music');
-  if (!playing) audioStatus.textContent = wasActive ? 'Music stopped.' : '';
+  if (!playing) audioStatusKey = wasActive ? 'audio-stopped' : '';
+  renderMusic();
 }) : null;
 musicButton.addEventListener('click', async () => {
   const action = ++musicAction;
   if (music?.playing || musicPending) {
-    music?.stop(); musicPending = false;
-    musicButton.removeAttribute('aria-busy');
+    music?.stop();
+    musicPending = false;
+    renderMusic();
     return;
   }
   musicPending = true;
-  musicButton.setAttribute('aria-busy', 'true');
-  musicButton.querySelector('span').textContent = 'Cancel music';
-  audioStatus.textContent = '';
+  musicFailed = false;
+  audioStatusKey = '';
+  renderMusic();
   try {
     if (!music) throw new Error('Audio unavailable');
     await music.play();
     if (action !== musicAction) return;
-    audioStatus.textContent = music.playing ? 'Playing a birthday melody. Tap Stop music to stop.' : '';
+    audioStatusKey = music.playing ? 'audio-playing' : '';
   } catch (error) {
     if (action !== musicAction) return;
     music?.stop();
     if (document.hidden || error.name === 'AbortError') return;
-    audioStatus.textContent = 'Music is unavailable in this browser. The rest of your celebration still works.';
-    musicButton.querySelector('span').textContent = 'Music unavailable';
+    musicFailed = true;
+    audioStatusKey = 'audio-unavailable';
   } finally {
     if (action === musicAction) {
       musicPending = false;
-      musicButton.removeAttribute('aria-busy');
+      renderMusic();
     }
   }
 });
 
 const publicURL = 'https://zeref538.github.io/mama-birthday/';
 const shareStatus = document.querySelector('#share-status');
-document.querySelector('#share').addEventListener('click', async () => {
-  shareStatus.textContent = ''; document.querySelector('#share-fallback').hidden = true;
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: 'Happy Birthday, Ma | Alma Merong', text: 'A birthday garden, made with love for Ma.', url: publicURL });
-      return;
-    } catch (error) { if (error.name === 'AbortError') return; }
-  }
+const shareButton = document.querySelector('#share');
+let shareStatusKey = '';
+function shareURL() { return language === 'fil' ? `${publicURL}?lang=fil` : publicURL; }
+function renderShareStatus() { shareStatus.textContent = shareStatusKey ? t(shareStatusKey) : ''; }
+shareButton.addEventListener('click', async () => {
+  shareStatusKey = '';
+  renderShareStatus();
+  document.querySelector('#share-fallback').hidden = true;
+  shareButton.disabled = true;
   try {
-    if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-    await navigator.clipboard.writeText(publicURL);
-    shareStatus.textContent = 'Birthday link copied. Send a little love.';
-  } catch {
-    document.querySelector('#share-fallback').hidden = false;
-    const input = document.querySelector('#share-url'); input.focus(); input.select();
-    shareStatus.textContent = 'Select and copy the link below to share it.';
-  }
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: t('share-title'), text: t('share-text'), url: shareURL() });
+        return;
+      } catch (error) { if (error.name === 'AbortError') return; }
+    }
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(shareURL());
+      shareStatusKey = 'share-copied';
+    } catch {
+      document.querySelector('#share-fallback').hidden = false;
+      const input = document.querySelector('#share-url');
+      input.value = shareURL();
+      input.focus();
+      input.select();
+      shareStatusKey = 'share-manual';
+    }
+    renderShareStatus();
+  } finally { shareButton.disabled = false; }
 });
+
+const languageButton = document.querySelector('#language');
+function applyLanguage() {
+  document.documentElement.lang = language;
+  document.title = t('page-title');
+  document.querySelector('.wordmark').setAttribute('aria-label', t('home-label'));
+  document.querySelectorAll('[data-copy]').forEach(element => {
+    element.textContent = t(element.dataset.copy);
+  });
+  languageButton.textContent = language === 'en' ? 'Filipino' : 'English';
+  languageButton.lang = language === 'en' ? 'fil' : 'en';
+  languageButton.setAttribute('aria-label', language === 'en' ? 'Gawing Filipino ang website' : 'Switch website to English');
+  document.querySelector('.keepsake-image').setAttribute('aria-label', t('card-label'));
+  document.querySelector('.keepsake img').alt = t('card-alt');
+  document.querySelector('#share-url').value = shareURL();
+  renderCandles();
+  renderFlowers();
+  renderLetter();
+  updateMotion();
+  renderMusic();
+  renderShareStatus();
+}
+languageButton.addEventListener('click', () => {
+  language = language === 'en' ? 'fil' : 'en';
+  applyLanguage();
+});
+if (translations?.en && translations?.fil) {
+  applyLanguage();
+} else {
+  // Keep the native letter and card usable if the copy file failed to arrive.
+  effects?.setPaused(true);
+  document.body.classList.add('motion-paused');
+  document.querySelector('.experience-controls').hidden = true;
+  shareButton.hidden = true;
+  [...candles, wish, ...document.querySelectorAll('.bloom')].forEach(button => { button.disabled = true; });
+  hint.textContent = 'Some birthday surprises could not load. Refresh this page to try again.';
+  wishDisplay.querySelector('p').textContent = 'Refresh this page to load the flower wishes.';
+}
