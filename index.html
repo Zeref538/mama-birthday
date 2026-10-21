@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241525">
+  <meta name="description" content="A little birthday surprise, made with love for Ma.">
+  <title>Happy Birthday, Ma ♡</title>
+  <link rel="icon" href="assets/flower.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#letter">Skip to your letter</a>
+  <header><a href="#" aria-label="Birthday for Ma, home">for you, Ma <span aria-hidden="true">♡</span></a><span>October 22</span></header>
+  <main>
+    <section class="birthday" aria-labelledby="greeting">
+      <div class="intro">
+        <h1 id="greeting">Happy<br>Birthday,<br><span>Ma.</span></h1>
+        <p class="opening">Today, the love comes back to you.</p>
+        <p class="description">A little corner of the world, just for you.<br>A little reminder of how loved you are.</p>
+        <a class="letter-link" href="#letter">There's a letter for you <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="celebration">
+        <div class="cake-scene" role="group" aria-label="Birthday cake with five candles. Tap a candle to blow it out.">
+          <svg class="garden" viewBox="0 0 500 510" aria-hidden="true">
+            <g fill="none" stroke="#9baf94" stroke-width="2"><path d="M96 445Q32 330 78 207M71 337Q31 307 36 278M63 286Q105 260 103 240M400 447Q470 331 428 196M440 319Q479 300 477 266M441 280Q403 254 401 227"/></g>
+            <g fill="#7d9279"><ellipse cx="49" cy="310" rx="12" ry="26" transform="rotate(-40 49 310)"/><ellipse cx="90" cy="267" rx="12" ry="25" transform="rotate(40 90 267)"/><ellipse cx="461" cy="297" rx="12" ry="26" transform="rotate(40 461 297)"/><ellipse cx="418" cy="252" rx="12" ry="25" transform="rotate(-40 418 252)"/></g>
+            <g fill="#d79fbb"><path d="M78 211C25 207 49 166 73 187C48 141 97 139 89 179C122 148 139 193 98 198C132 218 94 243 78 211Z"/><path d="M427 204C389 214 376 180 405 176C375 151 411 128 424 162C437 125 473 146 451 174C487 174 474 215 443 198Z"/></g>
+            <g fill="#ead6ae"><circle cx="83" cy="198" r="8"/><circle cx="429" cy="180" r="8"/><path d="m160 72 3 10 10 3-10 3-3 10-3-10-10-3 10-3Z"/><path d="m378 111 2 8 8 2-8 2-2 8-2-8-8-2 8-2Z"/></g>
+            <g fill="#ba8caa"><circle cx="119" cy="131" r="3"/><circle cx="354" cy="55" r="3"/><circle cx="309" cy="106" r="2"/></g>
+            <ellipse cx="252" cy="444" rx="165" ry="23" fill="#17101c"/>
+            <path d="M99 421Q250 461 403 421L394 439Q251 477 108 439Z" fill="#afa4bd"/>
+            <ellipse cx="251" cy="420" rx="152" ry="28" fill="#e3d9e9"/>
+            <path d="M126 306V405C126 440 376 440 376 405V306Z" fill="#cb7b9d"/>
+            <path d="M126 353Q249 384 376 353V378Q249 409 126 378Z" fill="#b9658a"/>
+            <path d="M126 305V335Q137 356 150 337V350Q166 372 178 347V340Q193 365 207 345V354Q222 377 235 350V348Q250 368 265 348V359Q280 378 293 350V345Q310 365 322 343V350Q339 367 352 341V335Q365 353 376 332V305Z" fill="#f5d2df"/>
+            <ellipse cx="251" cy="305" rx="125" ry="32" fill="#f9e2ea"/>
+            <ellipse cx="251" cy="305" rx="101" ry="22" fill="none" stroke="#e8b5cb" stroke-width="2" stroke-dasharray="2 9"/>
+            <g fill="#f5d2df"><circle cx="145" cy="405" r="7"/><circle cx="169" cy="413" r="7"/><circle cx="195" cy="419" r="7"/><circle cx="222" cy="422" r="7"/><circle cx="250" cy="423" r="7"/><circle cx="278" cy="422" r="7"/><circle cx="306" cy="419" r="7"/><circle cx="333" cy="413" r="7"/><circle cx="358" cy="405" r="7"/></g>
+          </svg>
+          <div class="candles">
+            <button class="candle" aria-label="Blow out candle 1" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
+            <button class="candle" aria-label="Blow out candle 2" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
+            <button class="candle" aria-label="Blow out candle 3" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
+            <button class="candle" aria-label="Blow out candle 4" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
+            <button class="candle" aria-label="Blow out candle 5" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
+          </div>
+        </div>
+        <p class="wish-status" role="status" aria-live="polite">Close your eyes. Make a wish.</p>
+        <button class="wish-button" id="wish">Blow out the candles <span aria-hidden="true">✧</span></button>
+        <p class="hint">or tap each little flame</p>
+        <noscript><p>Enable JavaScript to blow out the candles. Your letter still opens below.</p></noscript>
+      </div>
+    </section>
+    <section class="letter-section" id="letter" aria-label="A birthday letter for Ma">
+      <div class="letter-intro"><span class="drawn-heart" aria-hidden="true">♡</span><h2>Some words, <br>just for you.</h2><p>The best part of this little surprise.</p></div>
+      <details class="letter"><summary><span>A letter for Ma</span><span class="open-label">Open your letter <span aria-hidden="true">+</span></span></summary><div class="letter-body"><p class="salutation">Dear Ma,</p><div id="personal-message"><p class="placeholder-label">Your personal message goes here.</p><p>This space is waiting for John's birthday message for you.</p></div><p class="signature">With love,<br><span>John</span></p></div></details>
+    </section>
+    <footer><p>Every day, but especially today.<br><span>You are so loved, Ma.</span></p><a href="#greeting">Back to the birthday <span aria-hidden="true">↑</span></a></footer>
+  </main>
+  <div id="confetti" aria-hidden="true"></div>
+</body>
+</html>
+
