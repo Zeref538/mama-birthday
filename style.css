@@ -58,7 +58,7 @@ h1 > .ma { color: var(--pink); }
 .letter-link .icon { width: 16px; height: 16px; transition: transform .2s; }
 .letter-link:hover { color: var(--pink); }
 .letter-link:hover .icon { transform: translate(2px, -2px); }
-.garden-invitation { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .06em; text-decoration: none; color: var(--muted); padding: 8px 20px; white-space: nowrap; }
+.garden-invitation { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .06em; text-decoration: none; color: var(--muted); padding: 8px 20px; width: max-content; max-width: calc(100% - 40px); text-align: center; white-space: normal; }
 .scroll-thread { width: 1px; height: 33px; background: linear-gradient(var(--pink), transparent); }
 .celebration { text-align: center; min-width: 0; position: relative; }
 .cake-scene { position: relative; width: 100%; max-width: 540px; aspect-ratio: 500 / 510; margin: 0 auto; isolation: isolate; }
@@ -120,7 +120,7 @@ h1 > .ma { color: var(--pink); }
 .bloom-rest { left: 63%; top: 13%; color: #b7a0ce; transform: rotate(11deg); }
 .bloom-adventure { left: 76%; top: 36%; color: #edc6d6; transform: rotate(-5deg); }
 .flower-wish { margin: 7px auto 0; padding: 25px 15px 0; border-top: 1px solid var(--line); text-align: center; max-width: 440px; min-height: 145px; }
-.flower-wish h3 { color: var(--pink); font-size: 27px; letter-spacing: -.02em; }
+.flower-wish h3 { overflow-wrap: anywhere; color: var(--pink); font-size: 27px; letter-spacing: -.02em; }
 .flower-wish p { color: var(--muted); font-size: 13px; line-height: 1.85; margin: 12px auto 0; max-width: 36ch; }
 .flower-wish.is-changing { animation: wish-unfold .5s var(--ease) both; }
 
@@ -230,7 +230,7 @@ body.motion-paused .letter-body, body.motion-paused .flower-wish, body.motion-pa
   .letter[open] .letter-title { font-size: 23px; }
   .letter[open] .open-label { font-size: 11px; gap: 10px; }
   .closing { padding: 60px 23px 45px; }
-  .closing h2 { font-size: 60px; }
+  .closing h2 { font-size: clamp(48px, 16vw, 60px); }
   .closing > p { font-size: 13px; }
   footer { margin: 0 23px; padding-top: 26px; align-items: start; }
   footer p, footer a { font-size: 11px; }
@@ -288,3 +288,5 @@ html[lang="fil"] h1 { font-size: clamp(52px, 5.9vw, 82px); }
   .experience-controls { gap: 8px; }
   html[lang="fil"] h1 { font-size: clamp(45px, 14vw, 65px); }
 }
+
+.closing-copy { min-width: 0; }
