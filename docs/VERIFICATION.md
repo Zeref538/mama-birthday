@@ -31,3 +31,9 @@ Both languages passed at 320, 375, 768, 1024 and 1440px in Edge and WebKit, incl
 Blocking copy.js in Edge and WebKit leaves the native letter and card available, shows a readable refresh message and stops effects; no JavaScript exceptions occur. Audio replay browser checks still pass after localization.
 
 Nine matched slow-network samples compared TTF, WOFF2, and WOFF2 preload, three per option at 100kbps download, 300ms latency and fourfold CPU throttling. Median first content/font-ready times were 5.212s/16.613s for TTF, 5.220s/9.170s for WOFF2, and 7.020s/7.143s with preload. Chose WOFF2 without preload to preserve first content timing. These samples preceded the language module and are a font comparison, not a final live load-time promise.
+
+## Final live release
+
+GitHub Pages release 94404ee was built and checked live at https://zeref538.github.io/mama-birthday/. Ten final browser/width combinations passed: Edge and WebKit at 320, 375, 768, 1024 and 1440px, including candle reset, all wishes, letter, language switching and music start/stop. No JavaScript or HTTP resource errors occurred. Six deployed text files matched local content and four binary assets matched SHA-256 hashes.
+
+Both languages also passed 320px with text enlarged to 200%, with the letter open. Invalid language input used English, and all document IDs were unique. The local preview server was stopped. Improvements ended when the usage tool showed 9% remaining. The automatic dependency updater was removed and its two generated PRs closed to preserve the solo-repository workflow.

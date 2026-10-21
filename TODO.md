@@ -2,26 +2,22 @@
 
 ## Agent Tasks
 
-- [x] Check supplied Facebook profile: locked, no verified personal content available.
-- [x] Personalize for Alma Merong and strengthen the birthday garden composition.
-- [x] Add animated garden lighting, candle smoke and a controlled celebration sequence.
-- [x] Add an interactive birthday bouquet and birthday melody with explicit sound control.
-- [x] Improve the letter presentation while preserving the message placeholder.
-- [x] Add sharing with a working copy fallback and a motion pause control.
-- [x] Test phone, desktop, keyboard, reduced motion and interaction resets.
-- [ ] Publish and verify the live GitHub Pages build.
-- [x] Add a downloadable birthday card and social preview image.
-- [x] Add automated regression checks for effects and music.
-- [ ] Complete additional quality passes until the usage target.
-- [x] Add and verify optional Filipino interface without changing the personal letter.
-- [ ] Shut down Windows after final deployment checks.
+- [x] Check supplied Facebook profile: locked, no personal content verified.
+- [x] Personalize the birthday garden for Alma Merong.
+- [x] Add candle smoke, fireflies and bounded celebration effects.
+- [x] Add five interactive flower wishes and optional birthday music.
+- [x] Improve the letter while preserving the personal-message placeholder.
+- [x] Add sharing, motion control and a downloadable birthday card.
+- [x] Add and verify the optional Filipino interface.
+- [x] Check phone, desktop, keyboard, enlarged text and reduced motion.
+- [x] Pass 24 automated regression tests and GitHub checks.
+- [x] Publish and verify the live GitHub Pages release.
+- [x] Stop improvements at the requested usage boundary: observed 9% remaining.
+
+## Zeref Tasks
+
+- [ ] Reply approve to retry the PC power-off request once.
 
 ## Notes
 
-John requested overdrive until 10% usage remains. Start reading: 94% remaining in the five-hour window, 84% remaining weekly. Check between meaningful milestones. Do not add personal claims from the locked Facebook profile.
-
-- Shutdown requested by John: after deployment and verification, shut down Windows without forcing unsaved apps closed.
-
-## In Progress
-
-- Final publication and live browser checks.
+Verified release: 94404ee. The letter intentionally remains a placeholder until John writes it. Facebook supplied no usable personal content. Automatic approval review rejected the power-off command with blocked by policy. No power-off is scheduled.
