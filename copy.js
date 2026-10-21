@@ -3,6 +3,8 @@
 window.BirthdayCopy = {
   en: {
     'skip-letter': 'Skip to your letter',
+    'dedication-label': 'A birthday dedication',
+    'letter-section-label': 'A birthday letter for Ma',
     'home-label': 'Birthday for Ma, home',
     'page-title': 'Happy Birthday, Ma | Alma Merong',
     'header-date': 'October 22 · A day for you',
@@ -95,6 +97,8 @@ window.BirthdayCopy = {
   },
   fil: {
     'skip-letter': 'Dumiretso sa liham mo',
+    'dedication-label': 'Pagbati sa iyong kaarawan',
+    'letter-section-label': 'Isang liham para sa kaarawan ni Ma',
     'home-label': 'Kaarawan ni Ma, bumalik sa simula',
     'page-title': 'Maligayang Kaarawan, Ma | Alma Merong',
     'header-date': 'Oktubre 22 · Araw mo ngayon',

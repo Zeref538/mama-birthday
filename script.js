@@ -223,6 +223,8 @@ function applyLanguage() {
   document.documentElement.lang = language;
   document.title = t('page-title');
   document.querySelector('.wordmark').setAttribute('aria-label', t('home-label'));
+  document.querySelector('.birthday-dedication').setAttribute('aria-label', t('dedication-label'));
+  document.querySelector('.letter-section').setAttribute('aria-label', t('letter-section-label'));
   document.querySelectorAll('[data-copy]').forEach(element => {
     element.textContent = t(element.dataset.copy);
   });
