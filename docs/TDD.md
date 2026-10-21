@@ -1,5 +1,11 @@
 # Technical design
 
-Use static HTML, CSS and JavaScript. A framework would add a build and dependency maintenance without helping this single page. Native details provides accessible letter disclosure; buttons extinguish candles and trigger bounded decorative confetti. Reload resets the celebration.
+Static HTML, CSS and JavaScript are served directly by GitHub Pages. A framework would add a build and package maintenance without helping this greeting.
 
-Check desktop and phone widths, keyboard activation, candle reset and reduced motion. Publish from main through GitHub Pages branch hosting. Roll back with git revert.
+`script.js` handles the candles, flower wishes, native letter disclosure and sharing. `effects.js` owns one canvas, 20 ambient fireflies and at most 50 burst particles. `music.js` schedules a finite birthday melody after an explicit tap and uses a local WAV fallback when Web Audio is unavailable.
+
+Motion pauses when the scene leaves view, the tab is hidden, the user presses Pause effects, or reduced motion is enabled. Cache the preference from the change event instead of reading it every drawing frame; the live Edge test found that repeated reads interfered with change notification. No text fades to unreadable colors during opening transitions.
+
+Native share falls back to clipboard and then a selectable URL. Audio failures show a message. Native details works without JavaScript. The PNG keepsake is directly downloadable. No data is stored or sent by the site.
+
+Run the dependency-free Node tests for replay, cancellation and cleanup. Browser QA covers phone and desktop widths, keyboard, long letters, reduced motion, native audio fallback and blocked sharing. Publication is a fast-forward merge to main followed by a live build and browser check. Roll back with git revert.

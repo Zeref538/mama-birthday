@@ -4,40 +4,76 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#241525">
-  <meta name="description" content="A little birthday surprise, made with love for Ma.">
-  <title>Happy Birthday, Ma ♡</title>
+  <meta name="description" content="A birthday garden for Alma Merong. A little music, a garden of wishes, and a surprise made with love for Ma.">
+  <meta property="og:title" content="Happy Birthday, Ma | Alma Merong">
+  <meta property="og:description" content="A garden of wishes and a birthday surprise made with love for Ma.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zeref538.github.io/mama-birthday/">
+  <meta property="og:image" content="https://zeref538.github.io/mama-birthday/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Happy Birthday, Ma. Alma Merong. A pink birthday cake in a midnight garden.">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Happy Birthday, Ma | Alma Merong</title>
   <link rel="icon" href="assets/flower.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/display.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <script src="effects.js" defer></script>
+  <script src="music.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#letter">Skip to your letter</a>
-  <header><a href="#" aria-label="Birthday for Ma, home">for you, Ma <span aria-hidden="true">♡</span></a><span>October 22</span></header>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.5a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="2.5"/><ellipse cx="18" cy="16" rx="3" ry="2.5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M5 17v4h14v-4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol>
+  </defs></svg>
+  <header>
+    <a class="wordmark" href="#greeting" aria-label="Birthday for Ma, home">for you, Ma <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></a>
+    <span class="header-date">October 22 <span aria-hidden="true">·</span> A day for you</span>
+    <div class="experience-controls" hidden>
+      <button class="tool-button" id="music" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg><span>Play music</span></button>
+      <button class="tool-button motion-button" id="motion" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg><span>Pause effects</span></button>
+    </div>
+  </header>
   <main>
     <section class="birthday" aria-labelledby="greeting">
       <div class="intro">
         <h1 id="greeting">Happy<br>Birthday,<br><span>Ma.</span></h1>
+        <p class="recipient">Alma Merong <span class="fine-rule" aria-hidden="true"></span> October 22</p>
         <p class="opening">Today, the love comes back to you.</p>
         <p class="description">A little corner of the world, just for you.<br>A little reminder of how loved you are.</p>
-        <a class="letter-link" href="#letter">There's a letter for you <span aria-hidden="true">↗</span></a>
+        <a class="letter-link" href="#letter">There's a letter for you <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="celebration">
         <div class="cake-scene" role="group" aria-label="Birthday cake with five candles. Tap a candle to blow it out.">
+          <div class="garden-orbit" aria-hidden="true"><span class="orbit-star star-one"></span><span class="orbit-star star-two"></span><span class="orbit-star star-three"></span></div>
           <svg class="garden" viewBox="0 0 500 510" aria-hidden="true">
+            <defs>
+              <linearGradient id="cake-shade" x1="0" x2="1"><stop stop-color="#ac587f"/><stop offset=".38" stop-color="#d38aa7"/><stop offset=".7" stop-color="#cc7d9d"/><stop offset="1" stop-color="#a6557b"/></linearGradient>
+              <linearGradient id="icing-shade" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fce7ee"/><stop offset="1" stop-color="#e7b0c6"/></linearGradient>
+            </defs>
             <g fill="none" stroke="#9baf94" stroke-width="2"><path d="M96 445Q32 330 78 207M71 337Q31 307 36 278M63 286Q105 260 103 240M400 447Q470 331 428 196M440 319Q479 300 477 266M441 280Q403 254 401 227"/></g>
             <g fill="#7d9279"><ellipse cx="49" cy="310" rx="12" ry="26" transform="rotate(-40 49 310)"/><ellipse cx="90" cy="267" rx="12" ry="25" transform="rotate(40 90 267)"/><ellipse cx="461" cy="297" rx="12" ry="26" transform="rotate(40 461 297)"/><ellipse cx="418" cy="252" rx="12" ry="25" transform="rotate(-40 418 252)"/></g>
             <g fill="#d79fbb"><path d="M78 211C25 207 49 166 73 187C48 141 97 139 89 179C122 148 139 193 98 198C132 218 94 243 78 211Z"/><path d="M427 204C389 214 376 180 405 176C375 151 411 128 424 162C437 125 473 146 451 174C487 174 474 215 443 198Z"/></g>
             <g fill="#ead6ae"><circle cx="83" cy="198" r="8"/><circle cx="429" cy="180" r="8"/><path d="m160 72 3 10 10 3-10 3-3 10-3-10-10-3 10-3Z"/><path d="m378 111 2 8 8 2-8 2-2 8-2-8-8-2 8-2Z"/></g>
             <g fill="#ba8caa"><circle cx="119" cy="131" r="3"/><circle cx="354" cy="55" r="3"/><circle cx="309" cy="106" r="2"/></g>
-            <ellipse cx="252" cy="444" rx="165" ry="23" fill="#17101c"/>
+            <g class="cake-layer"><ellipse cx="252" cy="444" rx="165" ry="23" fill="#17101c"/>
             <path d="M99 421Q250 461 403 421L394 439Q251 477 108 439Z" fill="#afa4bd"/>
             <ellipse cx="251" cy="420" rx="152" ry="28" fill="#e3d9e9"/>
-            <path d="M126 306V405C126 440 376 440 376 405V306Z" fill="#cb7b9d"/>
+            <path d="M126 306V405C126 440 376 440 376 405V306Z" fill="url(#cake-shade)"/>
             <path d="M126 353Q249 384 376 353V378Q249 409 126 378Z" fill="#b9658a"/>
-            <path d="M126 305V335Q137 356 150 337V350Q166 372 178 347V340Q193 365 207 345V354Q222 377 235 350V348Q250 368 265 348V359Q280 378 293 350V345Q310 365 322 343V350Q339 367 352 341V335Q365 353 376 332V305Z" fill="#f5d2df"/>
+            <path d="M126 305V335Q137 356 150 337V350Q166 372 178 347V340Q193 365 207 345V354Q222 377 235 350V348Q250 368 265 348V359Q280 378 293 350V345Q310 365 322 343V350Q339 367 352 341V335Q365 353 376 332V305Z" fill="url(#icing-shade)"/>
             <ellipse cx="251" cy="305" rx="125" ry="32" fill="#f9e2ea"/>
             <ellipse cx="251" cy="305" rx="101" ry="22" fill="none" stroke="#e8b5cb" stroke-width="2" stroke-dasharray="2 9"/>
             <g fill="#f5d2df"><circle cx="145" cy="405" r="7"/><circle cx="169" cy="413" r="7"/><circle cx="195" cy="419" r="7"/><circle cx="222" cy="422" r="7"/><circle cx="250" cy="423" r="7"/><circle cx="278" cy="422" r="7"/><circle cx="306" cy="419" r="7"/><circle cx="333" cy="413" r="7"/><circle cx="358" cy="405" r="7"/></g>
+            </g>
           </svg>
           <div class="candles">
             <button class="candle" aria-label="Blow out candle 1" aria-pressed="false"><span class="flame"></span><span class="wick"></span><span class="wax"></span></button>
@@ -48,18 +84,51 @@
           </div>
         </div>
         <p class="wish-status" role="status" aria-live="polite">Close your eyes. Make a wish.</p>
-        <button class="wish-button" id="wish">Blow out the candles <span aria-hidden="true">✧</span></button>
+        <button class="wish-button" id="wish">Blow out the candles <svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg></button>
         <p class="hint">or tap each little flame</p>
         <noscript><p>Enable JavaScript to blow out the candles. Your letter still opens below.</p></noscript>
       </div>
+      <a class="garden-invitation" href="#wishes"><span>There's more love below</span><span class="scroll-thread" aria-hidden="true"></span></a>
+    </section>
+    <section class="birthday-dedication" aria-label="A birthday dedication"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg><p>Today, let the world<br>be a little softer.<br><em>It's your day, Ma.</em></p><span>Maligayang kaarawan, Alma.</span></section>
+    <section class="wishes-section" id="wishes" aria-labelledby="wishes-title">
+      <div class="wishes-intro"><h2 id="wishes-title">A garden <br>of wishes.</h2><p>Flowers fade. These wishes stay.<br>Pick a bloom, just for you.</p><span class="bloom-count" id="bloom-count">Five flowers. Five little wishes.</span></div>
+      <div class="bouquet-wrap">
+        <div class="bouquet" role="group" aria-label="Five birthday flowers. Choose one to read its wish.">
+          <svg class="bouquet-stems" viewBox="0 0 540 420" aria-hidden="true"><g fill="none" stroke="#93a48b" stroke-width="2"><path d="M265 395Q190 250 90 140M265 395Q220 240 180 80M265 395Q270 180 280 65M265 395Q330 230 393 110M265 395Q400 290 460 215"/></g><g fill="#6e886c"><path d="M220 320Q145 310 151 251Q211 259 220 320ZM245 312Q187 244 217 203Q258 250 245 312ZM290 313Q300 245 347 245Q350 295 290 313ZM310 345Q356 294 401 313Q363 362 310 345Z"/></g><path d="m228 366 77 9-30 31Z" fill="#d6a3b9"/><path d="M264 383Q208 345 207 373Q204 400 264 383Q314 355 321 378Q326 405 264 383M264 383l-27 34m27-34 24 34" fill="none" stroke="#edc6d6" stroke-width="5" stroke-linecap="round"/></svg>
+          <button class="bloom bloom-peace" data-wish="peace" aria-pressed="false" aria-controls="flower-wish" aria-label="Pick the pink flower: a wish for peace"><svg viewBox="0 0 120 120" aria-hidden="true"><g class="petals" fill="currentColor"><ellipse cx="60" cy="34" rx="18" ry="28"/><ellipse cx="60" cy="86" rx="18" ry="28"/><ellipse cx="34" cy="60" rx="28" ry="18"/><ellipse cx="86" cy="60" rx="28" ry="18"/><ellipse cx="41" cy="41" rx="18" ry="25" transform="rotate(-45 41 41)"/><ellipse cx="79" cy="79" rx="18" ry="25" transform="rotate(-45 79 79)"/><ellipse cx="41" cy="79" rx="18" ry="25" transform="rotate(45 41 79)"/><ellipse cx="79" cy="41" rx="18" ry="25" transform="rotate(45 79 41)"/></g><circle class="flower-center" cx="60" cy="60" r="15" fill="#ead6ae"/><circle cx="56" cy="56" r="2" fill="#786043"/><circle cx="64" cy="60" r="2" fill="#786043"/><circle cx="57" cy="65" r="2" fill="#786043"/></svg></button>
+          <button class="bloom bloom-joy" data-wish="joy" aria-pressed="false" aria-controls="flower-wish" aria-label="Pick the golden flower: a wish for joy"><svg viewBox="0 0 120 120" aria-hidden="true"><g class="petals" fill="currentColor"><ellipse cx="60" cy="32" rx="14" ry="27"/><ellipse cx="60" cy="88" rx="14" ry="27"/><ellipse cx="32" cy="60" rx="27" ry="14"/><ellipse cx="88" cy="60" rx="27" ry="14"/><ellipse cx="40" cy="40" rx="14" ry="27" transform="rotate(-45 40 40)"/><ellipse cx="80" cy="80" rx="14" ry="27" transform="rotate(-45 80 80)"/><ellipse cx="40" cy="80" rx="14" ry="27" transform="rotate(45 40 80)"/><ellipse cx="80" cy="40" rx="14" ry="27" transform="rotate(45 80 40)"/></g><circle class="flower-center" cx="60" cy="60" r="17" fill="#806344"/><circle cx="60" cy="60" r="11" fill="none" stroke="#d1ac75" stroke-dasharray="2 5"/></svg></button>
+          <button class="bloom bloom-love" data-wish="love" aria-pressed="false" aria-controls="flower-wish" aria-label="Pick the rose flower: a wish for love"><svg viewBox="0 0 120 120" aria-hidden="true"><g class="petals" fill="currentColor"><path d="M60 8C76 1 93 18 85 33C109 22 123 46 106 62C126 80 102 102 86 91C88 116 61 123 51 103C32 120 10 100 22 81C-3 79-1 47 23 45C5 25 28 5 44 21C47 14 52 10 60 8Z"/></g><path d="M44 48C53 29 86 37 88 60C91 83 57 94 41 74C28 57 52 41 66 52C81 65 62 79 53 67" fill="none" stroke="#823b61" stroke-width="3" stroke-linecap="round"/></svg></button>
+          <button class="bloom bloom-rest" data-wish="rest" aria-pressed="false" aria-controls="flower-wish" aria-label="Pick the lavender flower: a wish for rest"><svg viewBox="0 0 120 120" aria-hidden="true"><g class="petals" fill="currentColor"><path d="M60 13C84-5 105 26 87 43C118 39 125 75 95 82C112 107 77 125 60 101C42 126 8 107 25 82C-6 75 2 39 33 43C15 25 36-5 60 13Z"/></g><circle class="flower-center" cx="60" cy="60" r="15" fill="#eed9b2"/><g stroke="#89735b" stroke-width="1.5"><path d="M60 49v22M49 60h22m-19-8 16 16m0-16L52 68"/></g></svg></button>
+          <button class="bloom bloom-adventure" data-wish="adventure" aria-pressed="false" aria-controls="flower-wish" aria-label="Pick the pale pink flower: a wish for new adventures"><svg viewBox="0 0 120 120" aria-hidden="true"><g class="petals" fill="currentColor"><ellipse cx="60" cy="33" rx="20" ry="28"/><ellipse cx="84" cy="48" rx="28" ry="20" transform="rotate(-18 84 48)"/><ellipse cx="76" cy="79" rx="20" ry="28" transform="rotate(-30 76 79)"/><ellipse cx="43" cy="80" rx="20" ry="28" transform="rotate(30 43 80)"/><ellipse cx="32" cy="47" rx="28" ry="20" transform="rotate(18 32 47)"/></g><circle class="flower-center" cx="60" cy="60" r="15" fill="#d0ad73"/><circle cx="60" cy="60" r="9" fill="#e9d5a5"/></svg></button>
+        </div>
+        <div class="flower-wish" id="flower-wish" role="status" aria-live="polite" aria-atomic="true"><h3>A little love, in full bloom.</h3><p>Tap any flower to discover its birthday wish.</p></div>
+        <noscript><p>Wishing you peace, joy, love, rest, and new adventures.</p></noscript>
+      </div>
     </section>
     <section class="letter-section" id="letter" aria-label="A birthday letter for Ma">
-      <div class="letter-intro"><span class="drawn-heart" aria-hidden="true">♡</span><h2>Some words, <br>just for you.</h2><p>The best part of this little surprise.</p></div>
-      <details class="letter"><summary><span>A letter for Ma</span><span class="open-label">Open your letter <span aria-hidden="true">+</span></span></summary><div class="letter-body"><p class="salutation">Dear Ma,</p><div id="personal-message"><p class="placeholder-label">Your personal message goes here.</p><p>This space is waiting for John's birthday message for you.</p></div><p class="signature">With love,<br><span>John</span></p></div></details>
+      <div class="letter-intro"><svg class="icon letter-heart" aria-hidden="true"><use href="#i-heart"/></svg><h2>Some words, <br>just for you.</h2><p>The best part of this little surprise.<br>A few words from your son.</p></div>
+      <details class="letter"><summary><span class="envelope-lines" aria-hidden="true"></span><span class="letter-title">A letter for Ma</span><span class="wax-seal" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span><span class="open-label">Open your letter <span aria-hidden="true">+</span></span></summary><div class="letter-body"><p class="letter-date">October 22 <span aria-hidden="true">·</span> For Alma</p><p class="salutation">Dear Ma,</p><div id="personal-message"><p class="placeholder-label">Your personal message goes here.</p><p>This space is waiting for John's birthday message for you.</p></div><p class="signature">With love,<br><span>John</span></p></div></details>
     </section>
-    <footer><p>Every day, but especially today.<br><span>You are so loved, Ma.</span></p><a href="#greeting">Back to the birthday <span aria-hidden="true">↑</span></a></footer>
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="closing-inner">
+        <div class="closing-copy">
+          <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+          <h2 id="closing-title">Here's to you,<br><span>Alma.</span></h2>
+          <p>May this year be full of the things<br>that make you happiest.</p>
+          <button class="share-button" id="share" hidden><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share this little celebration</button>
+          <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+          <div class="share-fallback" id="share-fallback" hidden><label for="share-url">Copy this birthday link</label><input id="share-url" type="url" readonly value="https://zeref538.github.io/mama-birthday/"></div>
+        </div>
+        <figure class="keepsake">
+          <a class="keepsake-image" href="assets/birthday-card.png" download="Happy-Birthday-Ma.png" aria-label="Save birthday card for Alma Merong"><img src="assets/birthday-card.png" width="1080" height="1440" loading="lazy" decoding="async" alt="A birthday keepsake for Alma Merong, with pink lettering and a bouquet of flowers."></a>
+          <figcaption><a href="assets/birthday-card.png" download="Happy-Birthday-Ma.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Save your birthday card</a><span>A little keepsake, just for you.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+    <footer><p>Made with love, for Ma.<br><span>October 22. Always your day.</span></p><a href="#greeting">Back to the birthday <span aria-hidden="true">↑</span></a></footer>
   </main>
-  <div id="confetti" aria-hidden="true"></div>
+  <canvas id="celebration-effects" aria-hidden="true"></canvas>
+  <p id="audio-status" class="sr-only" role="status"></p>
 </body>
 </html>
-
