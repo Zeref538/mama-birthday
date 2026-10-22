@@ -9,6 +9,7 @@
 - [x] Add scroll-driven artwork movement and a folded, lined-paper letter.
 - [x] Create three birthday portraits from the supplied photo references.
 - [x] Remove the signature line and present four downloadable cards together.
+- [x] Sign the birthday letter with John Andrei.
 - [x] Verify the motion upgrade on phone layouts, keyboard and reduced motion.
 - [x] Publish and verify the updated live site.
 
