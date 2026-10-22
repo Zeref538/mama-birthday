@@ -23,6 +23,7 @@ function harness({ available = true, deferredResume = false, running = true, rej
       this.currentTime = 10;
       this.destination = {};
       this.oscillators = [];
+      this.peaks = [];
       contexts.push(this);
     }
     resume() {
@@ -43,7 +44,7 @@ function harness({ available = true, deferredResume = false, running = true, rej
     }
     createGain() {
       return {
-        gain: { setValueAtTime() {}, linearRampToValueAtTime() {}, exponentialRampToValueAtTime() {} },
+        gain: { setValueAtTime() {}, linearRampToValueAtTime: value => this.peaks.push(value), exponentialRampToValueAtTime() {} },
         connect() {}, disconnect() {},
       };
     }
@@ -70,6 +71,7 @@ test('music stays silent until explicitly played, then schedules a finite melody
   assert.equal(h.music.playing, false);
   await h.music.play();
   assert.equal(h.contexts.length, 1);
+  assert.ok(h.contexts[0].peaks.every(value => value === .28), 'the louder melody keeps a bounded note gain');
   assert.equal(h.music.playing, true);
   assert.deepEqual(h.changes, [true]);
   const voices = h.contexts[0].oscillators;
@@ -207,7 +209,8 @@ test('native media fallback creates and plays its audio only after an explicit r
   assert.equal(h.music.playing, false);
   await h.music.play();
   assert.equal(h.instances.length, 1);
-  assert.equal(h.instances[0].src, 'assets/birthday-melody.wav');
+  assert.equal(h.instances[0].src, 'assets/birthday-melody.wav?v=7');
+  assert.equal(h.instances[0].volume, 1);
   assert.equal(h.instances[0].paused, false);
   assert.equal(h.music.playing, true);
   assert.deepEqual(h.changes, [true]);

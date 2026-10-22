@@ -21,3 +21,5 @@ DM Serif Display is self-hosted as Birthday for headings. Segoe UI and Arial car
 Flowers grow and sway. Candle light becomes three fireworks. Paper opens inside an envelope. Stop effects when paused, hidden or reduced motion is requested. Keep readable content visible without scripts. The canvas budget is 20 ambient lights plus 90 celebration sparks.
 
 The closing birthday collection contains four tilted cards with individual PNG downloads. Its three photographic portraits use the user's supplied reference photographs. The greeting reads "Love you always, Ma." Page previews use smaller WebP files; the full PNGs load only when opened or downloaded.
+
+A sealed birthday invitation opens the visit. Its opening tap begins the music; quiet entry is also available. Scroll reveals the dedication like paper and spreads pairs of cards from a gathered pose. Preserve static, readable content under reduced motion, pause or script failure.

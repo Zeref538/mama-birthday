@@ -16,12 +16,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Happy Birthday, Ma | Alma Merong</title>
   <link rel="icon" href="assets/flower.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=6">
-  <script src="copy.js?v=6" defer></script>
-  <script src="effects.js?v=6" defer></script>
-  <script src="motion.js?v=6" defer></script>
-  <script src="music.js?v=6" defer></script>
-  <script src="script.js?v=6" defer></script>
+  <link rel="stylesheet" href="style.css?v=7">
+  <script src="copy.js?v=7" defer></script>
+  <script src="effects.js?v=7" defer></script>
+  <script src="motion.js?v=7" defer></script>
+  <script src="opening.js?v=7" defer></script>
+  <script src="music.js?v=7" defer></script>
+  <script src="script.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip" href="#letter" data-copy="skip-letter">Skip to your letter</a>
@@ -125,28 +126,43 @@
         <div class="card-collection">
         <h3 data-copy="card-caption">Four birthday cards, made with love.</h3>
         <div class="card-gallery">
-        <figure class="keepsake">
-          <a class="keepsake-image" href="assets/birthday-card.png?v=6" download="Happy-Birthday-Ma.png" aria-label="Save birthday card for Alma Merong"><img src="assets/birthday-card.png?v=6" width="1080" height="1440" loading="lazy" decoding="async" alt="A birthday keepsake for Alma Merong, with pink lettering and a bouquet of flowers."></a>
-          <figcaption><span class="card-name">Birthday garden</span><a href="assets/birthday-card.png?v=6" download="Happy-Birthday-Ma.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-copy="save-card">Save image</span></a></figcaption>
-        </figure>
-        <figure class="keepsake">
+        <div class="card-slot"><figure class="keepsake">
+          <a class="keepsake-image" href="assets/birthday-card.png?v=7" download="Happy-Birthday-Ma.png" aria-label="Save birthday card for Alma Merong"><img src="assets/birthday-card.png?v=7" width="1080" height="1440" loading="lazy" decoding="async" alt="A birthday keepsake for Alma Merong, with pink lettering and a bouquet of flowers."></a>
+          <figcaption><span class="card-name">Birthday garden</span><a href="assets/birthday-card.png?v=7" download="Happy-Birthday-Ma.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-copy="save-card">Save image</span></a></figcaption>
+        </figure></div>
+        <div class="card-slot"><figure class="keepsake">
           <a class="keepsake-image" href="assets/birthday-midnight.png" download="Ma-Midnight-Garden.png"><img src="assets/birthday-midnight-preview.webp" width="540" height="960" loading="lazy" decoding="async" alt="Alma's birthday portrait surrounded by pink roses, lavender flowers and candlelight."></a>
           <figcaption><span class="card-name">Midnight flowers</span><a href="assets/birthday-midnight.png" download="Ma-Midnight-Garden.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-copy="save-card">Save image</span></a></figcaption>
-        </figure>
-        <figure class="keepsake">
+        </figure></div>
+        <div class="card-slot"><figure class="keepsake">
           <a class="keepsake-image" href="assets/birthday-scrapbook.png" download="Ma-Birthday-Scrapbook.png"><img src="assets/birthday-scrapbook-preview.webp" width="540" height="960" loading="lazy" decoding="async" alt="Two portraits of Alma in a pink floral birthday scrapbook with a satin ribbon."></a>
           <figcaption><span class="card-name">Little memories</span><a href="assets/birthday-scrapbook.png" download="Ma-Birthday-Scrapbook.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-copy="save-card">Save image</span></a></figcaption>
-        </figure>
-        <figure class="keepsake">
+        </figure></div>
+        <div class="card-slot"><figure class="keepsake">
           <a class="keepsake-image" href="assets/birthday-rose-gold.png" download="Ma-Rose-Gold-Birthday.png"><img src="assets/birthday-rose-gold-preview.webp" width="540" height="960" loading="lazy" decoding="async" alt="Alma's birthday portrait with pink balloons, gold ribbon and confetti."></a>
           <figcaption><span class="card-name">Rose and gold</span><a href="assets/birthday-rose-gold.png" download="Ma-Rose-Gold-Birthday.png"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-copy="save-card">Save image</span></a></figcaption>
-        </figure>
+        </figure></div>
         </div>
         </div>
       </div>
     </section>
     <footer><p><span data-copy="footer-first">Made with love, for Ma.</span><br><span class="footer-date" data-copy="footer-second">October 22. Always your day.</span></p><a href="#greeting"><span data-copy="back-top">Back to the birthday</span> <span aria-hidden="true">↑</span></a></footer>
   </main>
+  <section class="welcome" id="welcome" aria-labelledby="welcome-title" hidden>
+    <div class="welcome-inner">
+      <h2 id="welcome-title"><span data-copy="welcome-title">For you,</span><br><span class="welcome-ma">Ma.</span></h2>
+      <p class="welcome-date" data-copy="recipient-date">October 22</p>
+      <div class="welcome-art" aria-hidden="true">
+        <img class="welcome-flower flower-left" src="assets/welcome-flower.svg" width="62" height="62" alt="">
+        <img class="welcome-flower flower-right" src="assets/welcome-flower.svg" width="45" height="45" alt="">
+        <div class="welcome-envelope"><span class="welcome-seal"><svg class="icon"><use href="#i-heart"/></svg></span></div>
+      </div>
+      <p class="welcome-note" data-copy="welcome-note">A little birthday surprise, made with all my love.</p>
+      <button class="wish-button welcome-enter" id="enter-birthday"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg><span data-copy="welcome-enter">Open your surprise</span></button>
+      <p class="welcome-music" data-copy="welcome-music">With birthday music</p>
+      <button class="welcome-quiet" id="enter-quietly" data-copy="welcome-quiet">Open without music</button>
+    </div>
+  </section>
   <canvas id="celebration-effects" aria-hidden="true"></canvas>
   <p id="audio-status" class="sr-only" role="status"></p>
 </body>

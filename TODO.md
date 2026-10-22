@@ -2,6 +2,11 @@
 
 ## Agent Tasks
 
+- [x] Make scroll reveals and the four-card movement clearly visible.
+- [x] Add a birthday opening screen and transition into the page.
+- [x] Raise music volume and start it from the opening tap.
+- [ ] Verify and publish the opening and scroll update.
+
 - [x] Add a choreographed greeting, growing bouquet and visible garden motion.
 - [x] Add staggered fireworks and smooth envelope opening and closing.
 - [x] Add John's supplied birthday message and requested greeting.

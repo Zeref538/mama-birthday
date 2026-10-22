@@ -8,6 +8,7 @@ window.BirthdayMotion = class BirthdayMotion {
     this.active = new Set();
     this.seen = new WeakSet();
     this.sections = [...document.querySelectorAll('.birthday, .birthday-dedication, .wishes-section, .letter-section, .closing')];
+    this.cardSlots = [...document.querySelectorAll('.card-slot')];
     this.letter = document.querySelector('.letter');
     this.letterTarget = this.letter.open;
     this.letterAnimation = null;
@@ -55,10 +56,25 @@ window.BirthdayMotion = class BirthdayMotion {
   updateScroll() {
     this.scrollFrame = 0;
     if (!this.enabled) return;
-    this.sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
+    const sectionRects = this.sections.map(section => section.getBoundingClientRect());
+    const cardRects = this.cardSlots.map(slot => slot.getBoundingClientRect());
+    this.sections.forEach((section, index) => {
+      const rect = sectionRects[index];
       const distance = Math.max(-1, Math.min(1, (window.innerHeight / 2 - rect.top - rect.height / 2) / window.innerHeight));
       section.style.setProperty('--scroll-drift', `${(distance * 35).toFixed(2)}px`);
+      const reveal = Math.max(0, Math.min(1, (window.innerHeight - rect.top - 35) / (window.innerHeight * .52)));
+      section.style.setProperty('--reveal-lift', `${((1 - reveal) * 75).toFixed(2)}px`);
+      section.style.setProperty('--reveal-crop', `${((1 - reveal) * 100).toFixed(2)}%`);
+      section.style.setProperty('--garden-scale', (.65 + reveal * .35).toFixed(3));
+    });
+    this.cardSlots.forEach((slot, index) => {
+      const rect = cardRects[index];
+      const reveal = Math.max(0, Math.min(1, (window.innerHeight - rect.top - 25) / Math.min(window.innerHeight * .62, rect.height + 80)));
+      const remaining = 1 - reveal;
+      slot.style.setProperty('--card-x', `${(remaining * (index % 2 ? -65 : 65)).toFixed(2)}px`);
+      slot.style.setProperty('--card-y', `${(remaining * 85).toFixed(2)}px`);
+      slot.style.setProperty('--card-scale', (.72 + reveal * .28).toFixed(3));
+      slot.style.setProperty('--card-turn', `${(remaining * (index % 2 ? -8 : 8)).toFixed(2)}deg`);
     });
   }
 
@@ -95,10 +111,6 @@ window.BirthdayMotion = class BirthdayMotion {
       this.play(section.querySelector('p'), [{ transform: 'translateY(30px)' }, { transform: 'none' }]);
     } else if (section.matches('.letter-section')) {
       this.play(this.letter, [{ transform: 'translateY(38px) rotate(-4deg)' }, { transform: 'none' }], { duration: 1200 });
-    } else {
-      section.querySelectorAll('.keepsake').forEach((card, index) => {
-        this.play(card, [{ transform: 'translateY(45px) rotate(-9deg)' }, { transform: 'none' }], { duration: 1400, delay: index * 120 });
-      });
     }
   }
 

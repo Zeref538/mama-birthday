@@ -2,6 +2,11 @@
 
 window.BirthdayCopy = {
   en: {
+    'welcome-title': 'For you,',
+    'welcome-note': 'A little birthday surprise, made with all my love.',
+    'welcome-enter': 'Open your surprise',
+    'welcome-music': 'With birthday music',
+    'welcome-quiet': 'Open without music',
     'skip-letter': 'Skip to your letter',
     'dedication-label': 'A birthday dedication',
     'letter-section-label': 'A birthday letter for Ma',
@@ -96,6 +101,11 @@ window.BirthdayCopy = {
     'nojs-wishes': 'Wishing you peace, joy, love, rest, and new adventures.',
   },
   fil: {
+    'welcome-title': 'Para sa iyo,',
+    'welcome-note': 'Isang munting sorpresa, buong pagmamahal para sa iyo.',
+    'welcome-enter': 'Buksan ang sorpresa mo',
+    'welcome-music': 'May tugtog para sa kaarawan mo',
+    'welcome-quiet': 'Buksan nang walang tugtog',
     'skip-letter': 'Dumiretso sa liham mo',
     'dedication-label': 'Pagbati sa iyong kaarawan',
     'letter-section-label': 'Isang liham para sa kaarawan ni Ma',

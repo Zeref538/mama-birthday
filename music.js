@@ -18,10 +18,10 @@ window.BirthdayMusic = class BirthdayMusic {
     const request = ++this.request;
     if (!Audio) {
       if (!window.Audio) throw new Error('Audio is unavailable');
-      this.audio ||= new window.Audio('assets/birthday-melody.wav');
+      this.audio ||= new window.Audio('assets/birthday-melody.wav?v=7');
       this.audioOwner = request;
       this.audio.preload = 'none';
-      this.audio.volume = .7;
+      this.audio.volume = 1;
       this.audio.onended = () => this.stop();
       await this.audio.play();
       if (request !== this.request) {
@@ -53,7 +53,7 @@ window.BirthdayMusic = class BirthdayMusic {
       oscillator.frequency.value = notes[note];
       const duration = length * beat;
       gain.gain.setValueAtTime(0, start);
-      gain.gain.linearRampToValueAtTime(.14, start + .018);
+      gain.gain.linearRampToValueAtTime(.28, start + .018);
       gain.gain.exponentialRampToValueAtTime(.001, start + duration + .15);
       oscillator.connect(gain);
       gain.connect(this.context.destination);

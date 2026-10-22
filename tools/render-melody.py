@@ -11,7 +11,7 @@ for note,beats in melody:
     for i in range(int((duration+.4)*rate)):
         t=i/rate
         envelope=min(t/.012,1)*math.exp(-3.9*t)*min(1,max(0,(duration+.4-t)/.08))
-        tone=(math.sin(2*math.pi*notes[note]*t)+.12*math.sin(2*math.pi*notes[note]*2.75*t))*.18*envelope
+        tone=(math.sin(2*math.pi*notes[note]*t)+.12*math.sin(2*math.pi*notes[note]*2.75*t))*.28*envelope
         offset=int(start*rate)+i
         if offset<len(samples):samples[offset]+=tone
     start+=duration

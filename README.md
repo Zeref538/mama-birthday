@@ -18,7 +18,7 @@ Open `index.html` and replace the paragraphs inside `id="personal-message"`. Kee
 
 The five candles can be tapped individually or blown out together to launch staggered fireworks. A bouquet grows into view and holds five birthday wishes. The envelope opens and closes smoothly, and the closing section offers a downloadable birthday card and a sharing button.
 
-Music starts only when Play music is tapped. A short local audio file is used if synthesized audio is unavailable. The effects pause when out of view or hidden and respect the device's reduced-motion preference. Pause effects also stops them manually.
+The opening invitation starts music when Open your surprise is tapped. Open without music enters quietly; Play music can start it later. A short local audio file is used if synthesized audio is unavailable. The effects pause when out of view or hidden and respect the device's reduced-motion preference. Pause effects also stops them manually.
 
 The page collects no data and uses no accounts or paid services. Three birthday portraits were made using the five photographs John supplied. The four-card collection offers full-size PNG downloads and smaller WebP page previews. The supplied Facebook profile was locked, so it contributes no personal claims.
 

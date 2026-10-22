@@ -249,6 +249,9 @@ languageButton.addEventListener('click', () => {
 });
 if (translations?.en && translations?.fil) {
   applyLanguage();
+  if (window.BirthdayOpening) new window.BirthdayOpening({
+    motion, effects, onReady: updateMotion, startMusic: () => musicButton.click(),
+  });
 } else {
   // Keep the native letter and card usable if the copy file failed to arrive.
   effects?.setPaused(true);
