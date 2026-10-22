@@ -1,0 +1,133 @@
+{
+  "brand": "Mama Birthday",
+  "primitive": {
+    "color": {
+      "primary": {
+        "50": {
+          "$value": "#FEF8FA",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#FDF1F5",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#FAE2EC",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#F8D4E2",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#F5C5D9",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#F3B7CF",
+          "$type": "color"
+        },
+        "600": {
+          "$value": "#CF9CB0",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#AA8091",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#866572",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#614953",
+          "$type": "color"
+        }
+      },
+      "secondary": {
+        "50": {
+          "$value": "#FBF8FA",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#F6F1F5",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#EDE3EB",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#E5D4E1",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#DCC6D7",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#D3B8CD",
+          "$type": "color"
+        },
+        "600": {
+          "$value": "#B39CAE",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#948190",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#746571",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#544A52",
+          "$type": "color"
+        }
+      },
+      "accent": {
+        "50": {
+          "$value": "#FDFBF7",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#FBF7EF",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#F7EFDF",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#F2E6CE",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#EEDEBE",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#EAD6AE",
+          "$type": "color"
+        },
+        "600": {
+          "$value": "#C7B694",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#A4967A",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#817660",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#5E5646",
+          "$type": "color"
+        }
+      }
+    }
+  }
+}

@@ -37,3 +37,11 @@ Nine matched slow-network samples compared TTF, WOFF2, and WOFF2 preload, three 
 GitHub Pages release 94404ee was built and checked live at https://zeref538.github.io/mama-birthday/. Ten final browser/width combinations passed: Edge and WebKit at 320, 375, 768, 1024 and 1440px, including candle reset, all wishes, letter, language switching and music start/stop. No JavaScript or HTTP resource errors occurred. Six deployed text files matched local content and four binary assets matched SHA-256 hashes.
 
 Both languages also passed 320px with text enlarged to 200%, with the letter open. Invalid language input used English, and all document IDs were unique. The local preview server was stopped. Improvements ended when the usage tool showed 9% remaining. The automatic dependency updater was removed and its two generated PRs closed to preserve the solo-repository workflow.
+
+## Motion, letter and birthday collection expansion
+
+The local motion pass covered eight browser/width combinations: Edge and WebKit at 320, 375, 768 and 1440px. It exercised the three-wave fireworks, all five flowers, opening and closing the envelope, reversing a transition, keyboard activation, pause and reduced motion. All passed without JavaScript errors. Axe returned zero violations in the sampled open-letter states in both engines at 375px.
+
+Both engines downloaded all four cards at 375px; each result had a real PNG file signature. The portrait PNGs measure 941x1672, 940x1673 and 941x1672. The illustrated keepsake measures 1080x1440. Smaller portrait previews total 284,998 bytes, with full PNGs linked only for opening or download. All final portrait lettering was visually inspected after removing the signature words.
+
+The Node suite passes 26 tests, including staggered fireworks, replay bounds, expiry and disabled-motion behavior. A pause check initially found five color/border hover transitions still running; paused controls now disable transitions too. A separate 320px check with text enlarged to 200% found the new closing heading extending to 339px; wrapping now keeps both languages within 320px with the letter open or closed, in both engines. Missing-copy checks preserve the native letter and card without JavaScript errors. Physical phone performance remains unmeasured.

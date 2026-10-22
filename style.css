@@ -290,3 +290,79 @@ html[lang="fil"] h1 { font-size: clamp(52px, 5.9vw, 82px); }
 }
 
 .closing-copy { min-width: 0; }
+
+/* A living garden, only while the section is visible and effects are on. */
+h1 > span { display: inline-block; }
+.cake-scene::after { content: ''; position: absolute; inset: 20% 14%; border: 1px solid #ead6ae; border-radius: 50%; pointer-events: none; opacity: 0; }
+.motion-ready .cake-scene.is-celebrating::after { animation: wish-halo 1.6s var(--ease) both; }
+.motion-ready .birthday.motion-in-view .garden-orbit { animation: orbit-breathe 9s ease-in-out infinite alternate; }
+.motion-ready .birthday.motion-in-view .orbit-star { animation: star-turn 5s ease-in-out infinite; }
+.motion-ready .birthday.motion-in-view .star-two { animation-delay: -1.7s; }
+.motion-ready .birthday.motion-in-view .star-three { animation-delay: -3.2s; }
+.motion-ready .birthday.motion-in-view .scroll-thread { animation: thread-flow 2.4s ease-in-out infinite; transform-origin: top; }
+.motion-ready .wishes-section.motion-in-view .bloom .petals { animation: petal-sway 5s ease-in-out infinite alternate; }
+.motion-ready .wishes-section.motion-in-view .bloom:nth-of-type(even) .petals { animation-delay: -2.5s; animation-direction: alternate-reverse; }
+.motion-ready .wishes-section .bloom[aria-pressed='true'] .petals, .motion-ready .wishes-section .bloom:hover .petals { animation: none; }
+.motion-ready .bloom[aria-pressed='true']::after { animation: bloom-ring 1.1s var(--ease) both; }
+.motion-ready .birthday-dedication.motion-in-view::before { animation: dedication-drift 10s ease-in-out infinite alternate; }
+.motion-ready .birthday-dedication.motion-in-view::after { animation: dedication-drift 13s ease-in-out infinite alternate-reverse; }
+.letter summary { transition: background-color .4s; }
+.letter summary:hover { background-color: #f9eef5; }
+.letter[open] .letter-body { animation: paper-arrive .75s var(--ease) both; }
+.wish-button { position: relative; overflow: hidden; }
+.wish-button::after { content: ''; position: absolute; inset: -100% -25%; background: linear-gradient(110deg, transparent 40%, #ffffff60 50%, transparent 60%); transform: translateX(-110%); pointer-events: none; }
+.motion-ready .wish-button:hover::after, .motion-ready .wish-button:focus-visible::after { animation: button-glint .8s var(--ease); }
+html:has(body.motion-paused) { scroll-behavior: auto; }
+body.motion-paused *, body.motion-paused *::before, body.motion-paused *::after { transition: none !important; }
+@keyframes wish-halo { 0% { opacity: .8; transform: scale(.35); } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes orbit-breathe { from { transform: rotate(-6deg) scale(.96); } to { transform: rotate(6deg) scale(1); } }
+@keyframes star-turn { 0%, 100% { transform: rotate(45deg) scale(.7); } 50% { transform: rotate(135deg) scale(1.4); } }
+@keyframes thread-flow { 0%, 100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
+@keyframes petal-sway { from { transform: rotate(-7deg); } to { transform: rotate(9deg); } }
+@keyframes bloom-ring { from { transform: scale(.7) rotate(-40deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+@keyframes dedication-drift { to { transform: translate(45px, 25px); } }
+@keyframes paper-arrive { from { transform: translateY(28px); clip-path: inset(0 0 12%); } to { transform: none; clip-path: inset(0); } }
+@keyframes button-glint { to { transform: translateX(110%); } }
+@media (prefers-reduced-motion: reduce) { .letter[open] .letter-body { animation: none; } }
+
+/* Scroll moves the artwork at a different pace from the message. */
+.motion-ready .garden { transform: translateY(var(--scroll-drift, 0px)); }
+.motion-ready .bouquet-stems { translate: 0 var(--scroll-drift, 0px); }
+.motion-ready .keepsake-image { translate: 0 var(--scroll-drift, 0px); }
+.letter { border: 1px solid #bc91a8; background: #ead5df; }
+.letter summary { background: #eddae4; min-height: 290px; }
+.envelope-lines::before { inset: 0; width: 100%; height: 100%; border: 0; background: #e2c1d2; transform: none; clip-path: polygon(0 0, 100% 0, 50% 61%); }
+.envelope-lines::after { inset: 0; border: 0; background: linear-gradient(31deg, transparent 49.7%, #bb8da680 50%, transparent 50.3%) left bottom / 50% 100% no-repeat, linear-gradient(-31deg, transparent 49.7%, #bb8da680 50%, transparent 50.3%) right bottom / 50% 100% no-repeat; }
+.wax-seal { width: 60px; height: 60px; border-width: 4px; box-shadow: 0 5px 8px #75425935; }
+.postmark { position: absolute; right: 15px; top: 17px; width: 65px; height: 65px; fill: none; stroke: #925c7660; stroke-width: 1; transform: rotate(14deg); }
+.postmark text { fill: #75465f; stroke: none; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; text-anchor: middle; letter-spacing: 1px; }
+.letter[open] .postmark { display: none; }
+.letter-body { position: relative; background-color: #fcf5f6; background-image: repeating-linear-gradient(transparent 0 29px, #c6a7b538 29px 30px); background-position: 0 16px; border: 8px solid #f5e7ee; }
+.letter-body .signature-name { display: inline-block; font-style: italic; font-size: 36px; transform: rotate(-6deg); }
+.letter::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 150px; background: #e2c1d2; clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; pointer-events: none; opacity: 0; }
+.motion-ready .letter[open]::after { animation: envelope-lift .7s var(--ease) both; }
+@keyframes envelope-lift { 0% { opacity: 1; transform: scaleY(1); } 70% { opacity: 1; transform: scaleY(-.8); } 100% { opacity: 0; transform: scaleY(-1); } }
+.motion-ready .letter.is-closing::after { animation: envelope-fold .65s var(--ease) both; }
+@keyframes envelope-fold { 0% { opacity: 0; transform: scaleY(-1); } 30% { opacity: .7; } 100% { opacity: 1; transform: scaleY(1); } }
+
+.closing-inner { max-width: 1100px; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: center; }
+.card-collection { min-width: 0; }
+.closing h2 { overflow-wrap: anywhere; }
+.card-collection > h3 { color: var(--pink); font-size: 27px; margin: 0 0 35px; text-align: center; }
+.card-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 30px; padding: 15px; }
+.card-gallery .keepsake { width: auto; max-width: none; min-width: 0; margin: 0; }
+.card-gallery .keepsake-image { transform: rotate(-4deg); transform-origin: center; }
+.card-gallery .keepsake:nth-child(even) .keepsake-image { transform: rotate(4deg); }
+.card-gallery .keepsake:nth-child(3) .keepsake-image { transform: rotate(3deg); }
+.card-gallery .keepsake:nth-child(4) .keepsake-image { transform: rotate(-3deg); }
+.card-gallery .keepsake-image:hover, .card-gallery .keepsake-image:focus-visible { transform: rotate(0) translateY(-5px); }
+.card-gallery .keepsake-image img { width: 100%; aspect-ratio: 9 / 16; object-fit: contain; background: var(--bg); padding: 4px; }
+.card-gallery figcaption { margin-top: 18px; }
+.card-gallery .card-name { color: var(--gold); font-size: 12px; line-height: 1.5; }
+.card-gallery figcaption a { min-height: 44px; padding: 8px 0; font-size: 12px; }
+@media (max-width: 760px) {
+  .closing-inner { grid-template-columns: 1fr; gap: 40px; }
+  .card-collection > h3 { font-size: 25px; }
+  .card-gallery { gap: 22px 20px; padding: 10px; }
+  .card-gallery .card-name, .card-gallery figcaption a { font-size: 11px; }
+}

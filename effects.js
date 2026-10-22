@@ -79,6 +79,23 @@ window.BirthdayEffects = class BirthdayEffects {
     this.refresh();
   }
 
+  celebrate(x, y) {
+    if (!this.enabled) return;
+    const colors = ['#f3b7cf', '#ead6ae', '#d5b4dd'];
+    // Three timed fireworks share the same bounded loop, without timers.
+    this.particles = Array.from({ length: 90 }, (_, index) => {
+      const group = Math.floor(index / 30);
+      const angle = (index % 30) / 30 * Math.PI * 2;
+      const speed = 85 + Math.random() * 100;
+      const originX = Math.max(45, Math.min(this.width - 45, x + (group - 1) * Math.min(this.width * .28, 190)));
+      const originY = Math.max(80, y - 65 - (group % 2) * 100);
+      return { x: originX, y: originY, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+        age: -group * .5, life: 2.2, size: 2 + Math.random() * 2,
+        rotation: angle, spin: 1, color: colors[group], spark: true };
+    });
+    this.refresh();
+  }
+
   clearBurst() { this.particles = []; this.refresh(); }
 
   draw(time) {
@@ -107,15 +124,21 @@ window.BirthdayEffects = class BirthdayEffects {
     this.particles = this.particles.filter(particle => particle.age < particle.life);
     this.particles.forEach(particle => {
       particle.age += dt;
+      if (particle.age < 0) return;
       particle.x += particle.vx * dt;
       particle.y += particle.vy * dt;
-      particle.vy += 95 * dt;
+      particle.vy += (particle.spark ? 38 : 95) * dt;
       particle.rotation += particle.spin * dt;
       ctx.save();
       ctx.globalAlpha = Math.max(0, 1 - particle.age / particle.life);
       ctx.fillStyle = particle.color;
       ctx.translate(particle.x, particle.y);
       ctx.rotate(particle.rotation);
+      if (particle.spark) {
+        ctx.globalAlpha *= .25;
+        ctx.fillRect(-particle.size / 3, -particle.size * 5, particle.size * .66, particle.size * 5);
+        ctx.globalAlpha *= 4;
+      }
       ctx.fillRect(-particle.size / 2, -particle.size, particle.size, particle.size * 2);
       ctx.restore();
     });

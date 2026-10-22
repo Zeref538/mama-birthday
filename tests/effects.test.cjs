@@ -154,3 +154,27 @@ test('high density display backing buffer is capped and follows viewport resize'
   assert.equal(h.canvas.height, 1350);
   assert.equal(h.frames.size, 1);
 });
+
+test('fireworks are staggered, bounded on replay, and expire without timers', () => {
+  const h = harness();
+  for (let i = 0; i < 50; i++) h.effects.celebrate(180, 300);
+  assert.equal(h.effects.particles.length, 90);
+  assert.equal(h.frames.size, 1);
+  h.tick(100);
+  assert.equal(h.pieces, 60, 'only the first 30 sparks and their trails draw initially');
+  assert.equal(h.effects.particles.filter(particle => particle.age < 0).length, 60);
+  h.intersect(false);
+  for (let time = 140; time < 5000; time += 40) h.tick(time);
+  assert.equal(h.effects.particles.length, 0);
+  assert.equal(h.frames.size, 0);
+});
+
+test('fireworks cannot restart under pause or reduced motion', () => {
+  for (const reduced of [false, true]) {
+    const h = harness({ reduced });
+    if (!reduced) h.effects.setPaused(true);
+    h.effects.celebrate(100, 100);
+    assert.equal(h.effects.particles.length, 0);
+    assert.equal(h.frames.size, 0);
+  }
+});

@@ -2,11 +2,21 @@
 
 ## Agent Tasks
 
+- [x] Add a choreographed greeting, growing bouquet and visible garden motion.
+- [x] Add staggered fireworks and smooth envelope opening and closing.
+- [x] Add John's supplied birthday message and requested greeting.
+- [x] Redesign the keepsake and export it as a 1080 x 1440 PNG image.
+- [x] Add scroll-driven artwork movement and a folded, lined-paper letter.
+- [x] Create three birthday portraits from the supplied photo references.
+- [x] Remove the signature line and present four downloadable cards together.
+- [x] Verify the motion upgrade on phone layouts, keyboard and reduced motion.
+- [ ] Publish and verify the updated live site.
+
 - [x] Check supplied Facebook profile: locked, no personal content verified.
 - [x] Personalize the birthday garden for Alma Merong.
 - [x] Add candle smoke, fireflies and bounded celebration effects.
 - [x] Add five interactive flower wishes and optional birthday music.
-- [x] Improve the letter while preserving the personal-message placeholder.
+- [x] Add the personal message supplied by John to the improved letter.
 - [x] Add sharing, motion control and a downloadable birthday card.
 - [x] Add and verify the optional Filipino interface.
 - [x] Check phone, desktop, keyboard, enlarged text and reduced motion.
@@ -20,4 +30,4 @@
 
 ## Notes
 
-Verified release: 94404ee. The letter intentionally remains a placeholder until John writes it. Facebook supplied no usable personal content. Automatic approval review rejected the power-off command with blocked by policy. No power-off is scheduled.
+The letter contains John's supplied message. The four-card collection includes three portraits based on his supplied photo references. Facebook supplied no usable personal content. Automatic approval review rejected the power-off command with blocked by policy. No power-off is scheduled.

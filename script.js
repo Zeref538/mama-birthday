@@ -13,6 +13,7 @@ const status = document.querySelector('.wish-status');
 const hint = document.querySelector('.hint');
 const scene = document.querySelector('.cake-scene');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const motion = window.BirthdayMotion ? new window.BirthdayMotion(reducedMotion) : null;
 let systemReducedMotion = reducedMotion.matches;
 const effects = window.BirthdayEffects
   ? new window.BirthdayEffects(document.querySelector('#celebration-effects'), scene, reducedMotion) : null;
@@ -52,7 +53,7 @@ function celebrate() {
   scene.classList.add('is-celebrating');
   renderCandles();
   const rect = scene.getBoundingClientRect();
-  effects?.burst(rect.left + rect.width / 2, rect.top + rect.height * .45);
+  effects?.celebrate(rect.left + rect.width / 2, rect.top + rect.height * .45);
 }
 
 function extinguish(candle) {
@@ -94,6 +95,7 @@ function updateMotion() {
   motionButton.querySelector('use').setAttribute('href', stopped ? '#i-play' : '#i-pause');
   motionButton.disabled = systemReducedMotion;
   effects?.setPaused(stopped);
+  motion?.setPaused(stopped);
 }
 motionButton.addEventListener('click', () => { motionPaused = !motionPaused; updateMotion(); });
 reducedMotion.addEventListener('change', event => {
@@ -250,6 +252,7 @@ if (translations?.en && translations?.fil) {
 } else {
   // Keep the native letter and card usable if the copy file failed to arrive.
   effects?.setPaused(true);
+  motion?.setPaused(true);
   document.body.classList.add('motion-paused');
   document.querySelector('.experience-controls').hidden = true;
   shareButton.hidden = true;

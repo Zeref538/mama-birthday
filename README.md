@@ -1,6 +1,6 @@
 # Birthday for Ma
 
-A birthday garden for Alma Merong, made for her to open on a phone. Her birthday is October 22. The personal letter is a clearly marked placeholder until John writes it.
+A birthday garden for Alma Merong, made for her to open on a phone. Her birthday is October 22. The letter contains John's birthday message in his own words.
 
 Live: https://zeref538.github.io/mama-birthday/
 
@@ -16,11 +16,11 @@ Open `index.html` and replace the paragraphs inside `id="personal-message"`. Kee
 
 ## What's inside
 
-The five candles can be tapped individually or blown out together. A bouquet holds five birthday wishes. The letter opens inline, and the closing section offers a downloadable birthday card and a sharing button.
+The five candles can be tapped individually or blown out together to launch staggered fireworks. A bouquet grows into view and holds five birthday wishes. The envelope opens and closes smoothly, and the closing section offers a downloadable birthday card and a sharing button.
 
 Music starts only when Play music is tapped. A short local audio file is used if synthesized audio is unavailable. The effects pause when out of view or hidden and respect the device's reduced-motion preference. Pause effects also stops them manually.
 
-The page collects no data and uses no accounts or paid services. Facebook's supplied profile was locked, so it contributes no photographs or personal claims.
+The page collects no data and uses no accounts or paid services. Three birthday portraits were made using the five photographs John supplied. The four-card collection offers full-size PNG downloads and smaller WebP page previews. The supplied Facebook profile was locked, so it contributes no personal claims.
 
 ## Assets
 

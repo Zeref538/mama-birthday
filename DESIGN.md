@@ -8,11 +8,15 @@ Phone: single column, heading before cake, minimum 44px controls. Desktop: spaci
 
 ## Experience expansion
 
-Feature tier. Alma Merong is the confirmed name. Keep Ma as the greeting. Birthday remains October 22; personal letter remains a placeholder. Retain the midnight garden visual world and deepen it with a circular botanical cake stage, a blooming bouquet, and a birthday wish finale.
+Feature tier. Alma Merong is the confirmed name. Keep Ma as the greeting. Birthday remains October 22; the letter contains John's supplied message, split into three paragraphs without rewriting his wording. Retain the midnight garden visual world and deepen it with a circular botanical cake stage, a blooming bouquet, and a birthday wish finale.
 
 Motion thesis: extinguishing the candles turns their light into a burst of gold and rose particles, then reveals the closing birthday wish. Candle flames flicker softly while visible. Bouquet blooms respond to touch and keyboard; letter opens with a paper reveal. Ambient particles are capped and paused offscreen, while the page is hidden, when motion is paused or when reduced motion is requested. No effects block reading. Optional sound starts only from an explicit control.
 
-Performance budget: no runtime dependencies, one canvas with at most 70 particles, capped device-pixel ratio, no continuous full-page blur or shadows. Static artwork and text are always available.
+Performance budget: no runtime dependencies, one canvas with at most 110 particles (20 ambient plus 90 firework sparks), capped device-pixel ratio, no continuous full-page blur or shadows. Static artwork and text are always available.
+
+Motion expansion: the greeting settles into place as the cake turns into view. Bouquet stems draw from the ribbon toward each flower, followed by staggered blooms. Visible flowers sway; stars turn around the cake. Blowing out the candles launches three delayed radial fireworks and an expanding halo. The envelope opens and closes through a measured height transition, with paper sliding into place. Entrance sequences run once per visit. Ambient CSS motion runs only while its section is visible. Pause, reduced motion and hidden pages finish active entrances and clear canvas effects. No message text fades through low contrast.
+
+The closing section speaks as a son: "Love you always, Ma." Four tilted birthday keepsakes sit together in a two-column collection. Three photographic birthday portraits use the user's supplied photographs as likeness references; the fourth is the illustrated floral card. Each has a real PNG download. Smaller WebP previews keep the full-size portraits out of the page's initial downloads. Scroll gently offsets the garden, bouquet stems and keepsakes, using one scheduled update per scroll event batch. The letter is a folded envelope with a date postmark, wax seal and lined paper, with separate opening and closing flap motion.
 
 The display font is served as a 24.7KB local WOFF2, with TTF retained as a fallback and SVG card source. Headline wrapping and grid minimum widths support enlarged text. The cake touch target layout switches at 1100px. A matching PNG keepsake is available in the closing section; the social preview uses the same artwork.
 
