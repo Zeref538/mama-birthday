@@ -10,7 +10,7 @@
 - [x] Create three birthday portraits from the supplied photo references.
 - [x] Remove the signature line and present four downloadable cards together.
 - [x] Verify the motion upgrade on phone layouts, keyboard and reduced motion.
-- [ ] Publish and verify the updated live site.
+- [x] Publish and verify the updated live site.
 
 - [x] Check supplied Facebook profile: locked, no personal content verified.
 - [x] Personalize the birthday garden for Alma Merong.
